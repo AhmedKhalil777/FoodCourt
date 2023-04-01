@@ -1,0 +1,128 @@
+2023-03-22 04:34:18.582 +02:00 [INF] Registered 5 endpoints in 672 milliseconds.
+2023-03-22 04:34:18.770 +02:00 [INF] User profile is available. Using 'C:\Users\akhalil\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-03-22 04:34:21.735 +02:00 [INF] Executed DbCommand (768ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA journal_mode = 'wal';
+2023-03-22 04:34:21.908 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Contributors" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Contributors" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NOT NULL
+);
+2023-03-22 04:34:21.909 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Projects" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Projects" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NOT NULL,
+    "Priority" INTEGER NOT NULL
+);
+2023-03-22 04:34:21.910 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ToDoItems" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ToDoItems" PRIMARY KEY AUTOINCREMENT,
+    "Title" TEXT NOT NULL,
+    "Description" TEXT NOT NULL,
+    "ContributorId" INTEGER NULL,
+    "IsDone" INTEGER NOT NULL,
+    "ProjectId" INTEGER NULL,
+    CONSTRAINT "FK_ToDoItems_Projects_ProjectId" FOREIGN KEY ("ProjectId") REFERENCES "Projects" ("Id")
+);
+2023-03-22 04:34:21.910 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ToDoItems_ProjectId" ON "ToDoItems" ("ProjectId");
+2023-03-22 04:34:22.234 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "ToDoItems" AS "t")
+2023-03-22 04:34:22.299 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Name", "p"."Priority"
+FROM "Projects" AS "p"
+2023-03-22 04:34:22.306 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."ContributorId", "t"."Description", "t"."IsDone", "t"."ProjectId", "t"."Title"
+FROM "ToDoItems" AS "t"
+2023-03-22 04:34:22.310 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."Name"
+FROM "Contributors" AS "c"
+2023-03-22 04:34:22.507 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contributors" ("Name")
+VALUES (@p0)
+RETURNING "Id";
+2023-03-22 04:34:22.525 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contributors" ("Name")
+VALUES (@p0)
+RETURNING "Id";
+2023-03-22 04:34:22.716 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 12), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Projects" ("Name", "Priority")
+VALUES (@p0, @p1)
+RETURNING "Id";
+2023-03-22 04:34:22.727 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (Size = 31), @p4='?' (DbType = Boolean), @p5='?' (DbType = Int32), @p6='?' (Size = 18)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ToDoItems" ("ContributorId", "Description", "IsDone", "ProjectId", "Title")
+VALUES (@p2, @p3, @p4, @p5, @p6)
+RETURNING "Id";
+2023-03-22 04:34:22.729 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 81), @p2='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p4='?' (Size = 15)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ToDoItems" ("ContributorId", "Description", "IsDone", "ProjectId", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2023-03-22 04:34:22.730 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 59), @p2='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p4='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ToDoItems" ("ContributorId", "Description", "IsDone", "ProjectId", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2023-03-22 04:34:22.888 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-03-22 04:34:22.888 +02:00 [INF] Hosting environment: Development
+2023-03-22 04:34:22.888 +02:00 [INF] Content root path: D:\Projects\FoodCourt\src\FoodCourt.Web
+2023-03-22 04:34:22.909 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/ - -
+2023-03-22 04:34:23.025 +02:00 [WRN] Failed to determine the https port for redirect.
+2023-03-22 04:34:23.049 +02:00 [INF] Executing endpoint 'FoodCourt.Web.Controllers.HomeController.Index (FoodCourt.Web)'
+2023-03-22 04:34:23.058 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FoodCourt.Web.Controllers.HomeController (FoodCourt.Web).
+2023-03-22 04:34:23.066 +02:00 [INF] Executing ViewResult, running view Index.
+2023-03-22 04:34:23.742 +02:00 [INF] Executed ViewResult - view Index executed in 676.5458ms.
+2023-03-22 04:34:23.746 +02:00 [INF] Executed action FoodCourt.Web.Controllers.HomeController.Index (FoodCourt.Web) in 687.4519ms
+2023-03-22 04:34:23.746 +02:00 [INF] Executed endpoint 'FoodCourt.Web.Controllers.HomeController.Index (FoodCourt.Web)'
+2023-03-22 04:34:23.817 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/ - - - 200 - text/html;+charset=utf-8 909.5464ms
+2023-03-22 04:34:23.842 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - -
+2023-03-22 04:34:23.842 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/lib/bootstrap/dist/css/bootstrap.min.css - -
+2023-03-22 04:34:23.845 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/FoodCourt.Web.styles.css?v=XvzerbGPK-iZqoxpizFQpniG9X3kH89dEQm4fn6gkjE - -
+2023-03-22 04:34:23.847 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - -
+2023-03-22 04:34:23.847 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/lib/jquery/dist/jquery.min.js - -
+2023-03-22 04:34:23.848 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2023-03-22 04:34:23.863 +02:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'D:\Projects\FoodCourt\src\FoodCourt.Web\wwwroot\lib\jquery\dist\jquery.min.js'
+2023-03-22 04:34:23.863 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'D:\Projects\FoodCourt\src\FoodCourt.Web\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2023-03-22 04:34:23.863 +02:00 [INF] Sending file. Request path: '/FoodCourt.Web.styles.css'. Physical path: 'D:\Projects\FoodCourt\src\FoodCourt.Web\obj\Debug\net7.0\scopedcss\bundle\FoodCourt.Web.styles.css'
+2023-03-22 04:34:23.863 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'D:\Projects\FoodCourt\src\FoodCourt.Web\wwwroot\css\site.css'
+2023-03-22 04:34:23.863 +02:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'D:\Projects\FoodCourt\src\FoodCourt.Web\wwwroot\js\site.js'
+2023-03-22 04:34:23.863 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'D:\Projects\FoodCourt\src\FoodCourt.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2023-03-22 04:34:23.864 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - - - 200 230 text/javascript 16.8285ms
+2023-03-22 04:34:23.864 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/FoodCourt.Web.styles.css?v=XvzerbGPK-iZqoxpizFQpniG9X3kH89dEQm4fn6gkjE - - - 200 1130 text/css 19.1336ms
+2023-03-22 04:34:23.864 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - - - 200 194 text/css 22.2934ms
+2023-03-22 04:34:23.870 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/lib/jquery/dist/jquery.min.js - - - 200 89478 text/javascript 22.3707ms
+2023-03-22 04:34:23.870 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78474 text/javascript 22.4811ms
+2023-03-22 04:34:23.874 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 32.3899ms
+2023-03-22 04:34:23.878 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_vs/browserLink - -
+2023-03-22 04:34:23.878 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - -
+2023-03-22 04:34:23.882 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - - - 200 11996 application/javascript;+charset=utf-8 5.0067ms
+2023-03-22 04:34:23.968 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 90.1732ms
+2023-03-22 04:34:24.140 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/favicon.ico - -
+2023-03-22 04:34:24.145 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'D:\Projects\FoodCourt\src\FoodCourt.Web\wwwroot\favicon.ico'
+2023-03-22 04:34:24.145 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/favicon.ico - - - 200 5430 image/x-icon 4.5700ms
+2023-03-22 04:34:29.131 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger - -
+2023-03-22 04:34:29.134 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger - - - 301 - - 3.2171ms
+2023-03-22 04:34:29.144 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/index.html - -
+2023-03-22 04:34:29.234 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/index.html - - - 200 - text/html;charset=utf-8 89.7852ms
+2023-03-22 04:34:29.260 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/swagger-ui.css - -
+2023-03-22 04:34:29.261 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - -
+2023-03-22 04:34:29.261 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/swagger-ui-standalone-preset.js - -
+2023-03-22 04:34:29.261 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/swagger-ui-bundle.js - -
+2023-03-22 04:34:29.261 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_vs/browserLink - -
+2023-03-22 04:34:29.262 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - - - 200 11996 application/javascript;+charset=utf-8 1.2507ms
+2023-03-22 04:34:29.291 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 29.4187ms
+2023-03-22 04:34:30.961 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-03-22 04:34:30.964 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/swagger-ui.css - - - 200 143943 text/css 1703.6544ms
+2023-03-22 04:34:30.964 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-03-22 04:34:30.973 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/swagger-ui-standalone-preset.js - - - 200 339486 text/javascript 1711.5751ms
+2023-03-22 04:34:30.982 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-03-22 04:34:31.015 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/swagger-ui-bundle.js - - - 200 1096145 text/javascript 1753.7370ms
+2023-03-22 04:34:31.264 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/v1/swagger.json - -
+2023-03-22 04:34:31.281 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/favicon-32x32.png - -
+2023-03-22 04:34:31.283 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-03-22 04:34:31.283 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/favicon-32x32.png - - - 200 628 image/png 1.9838ms
+2023-03-22 04:34:31.483 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 219.0212ms
+2023-03-22 04:34:46.500 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/Contributors - -
+2023-03-22 04:34:46.579 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."Name"
+FROM "Contributors" AS "c"
+2023-03-22 04:34:46.595 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/Contributors - - - 200 - application/json;+charset=utf-8 94.9084ms
