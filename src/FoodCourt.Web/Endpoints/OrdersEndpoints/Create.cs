@@ -18,7 +18,7 @@ public class Create : Endpoint<CreateOrderRequest, CreateOrderResponse>
   {
     Post(CreateOrderRequest.Route);
     AllowAnonymous();
-    Options(o => o.WithGroupName("OrdersEndpoints"));
+    Options(o => o.WithTags("OrdersEndpoints"));
   }
 
   public override async Task HandleAsync(CreateOrderRequest req, CancellationToken ct)

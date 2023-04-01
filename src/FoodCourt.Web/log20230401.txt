@@ -2052,3 +2052,100 @@ OUTPUT INSERTED.[Id], i._Position;
 2023-04-01 22:45:59.285 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - -
 2023-04-01 22:45:59.327 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - - - 200 11996 application/javascript;+charset=utf-8 21.1466ms
 2023-04-01 22:45:59.402 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 116.8042ms
+2023-04-01 23:03:22.773 +02:00 [INF] Registered 6 endpoints in 348 milliseconds.
+2023-04-01 23:03:23.017 +02:00 [INF] User profile is available. Using 'C:\Users\akhalil\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-04-01 23:03:24.991 +02:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-04-01 23:03:25.065 +02:00 [INF] Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2023-04-01 23:03:25.422 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ToDoItems] AS [t]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-04-01 23:03:25.557 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-01 23:03:25.558 +02:00 [INF] Hosting environment: Development
+2023-04-01 23:03:25.558 +02:00 [INF] Content root path: D:\Projects\FoodCourt\src\FoodCourt.Web
+2023-04-01 23:03:25.585 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/ - -
+2023-04-01 23:03:25.690 +02:00 [WRN] Failed to determine the https port for redirect.
+2023-04-01 23:03:25.727 +02:00 [INF] Executing endpoint 'FoodCourt.Web.Controllers.HomeController.Index (FoodCourt.Web)'
+2023-04-01 23:03:25.739 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FoodCourt.Web.Controllers.HomeController (FoodCourt.Web).
+2023-04-01 23:03:25.754 +02:00 [INF] Executing ViewResult, running view Index.
+2023-04-01 23:03:25.972 +02:00 [INF] Executed ViewResult - view Index executed in 219.5294ms.
+2023-04-01 23:03:25.978 +02:00 [INF] Executed action FoodCourt.Web.Controllers.HomeController.Index (FoodCourt.Web) in 238.1268ms
+2023-04-01 23:03:25.980 +02:00 [INF] Executed endpoint 'FoodCourt.Web.Controllers.HomeController.Index (FoodCourt.Web)'
+2023-04-01 23:03:26.034 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/ - - - 200 - text/html;+charset=utf-8 451.8990ms
+2023-04-01 23:03:26.064 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - -
+2023-04-01 23:03:26.069 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_vs/browserLink - -
+2023-04-01 23:03:26.071 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - - - 200 11996 application/javascript;+charset=utf-8 6.5517ms
+2023-04-01 23:03:26.137 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 67.8181ms
+2023-04-01 23:03:27.199 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/index.html - -
+2023-04-01 23:03:27.338 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/index.html - - - 200 - text/html;charset=utf-8 139.3669ms
+2023-04-01 23:03:27.385 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - -
+2023-04-01 23:03:27.386 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_vs/browserLink - -
+2023-04-01 23:03:27.390 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - - - 200 11996 application/javascript;+charset=utf-8 4.6788ms
+2023-04-01 23:03:27.453 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 67.1419ms
+2023-04-01 23:03:27.601 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/v1/swagger.json - -
+2023-04-01 23:03:27.845 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 244.6443ms
+2023-04-01 23:17:46.112 +02:00 [INF] Registered 7 endpoints in 376 milliseconds.
+2023-04-01 23:17:46.350 +02:00 [INF] User profile is available. Using 'C:\Users\akhalil\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-04-01 23:17:48.283 +02:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2023-04-01 23:17:48.351 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2023-04-01 23:17:48.705 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ToDoItems] AS [t]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-04-01 23:17:48.822 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-01 23:17:48.822 +02:00 [INF] Hosting environment: Development
+2023-04-01 23:17:48.822 +02:00 [INF] Content root path: D:\Projects\FoodCourt\src\FoodCourt.Web
+2023-04-01 23:17:48.849 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/index.html - -
+2023-04-01 23:17:48.953 +02:00 [WRN] Failed to determine the https port for redirect.
+2023-04-01 23:17:49.236 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/index.html - - - 200 - text/html;charset=utf-8 390.9306ms
+2023-04-01 23:17:49.274 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_vs/browserLink - -
+2023-04-01 23:17:49.274 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - -
+2023-04-01 23:17:49.282 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_framework/aspnetcore-browser-refresh.js - - - 200 11996 application/javascript;+charset=utf-8 7.7160ms
+2023-04-01 23:17:49.343 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 68.8326ms
+2023-04-01 23:17:49.702 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/swagger/v1/swagger.json - -
+2023-04-01 23:17:49.955 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 253.3338ms
+2023-04-01 23:22:07.777 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:57678/info - -
+2023-04-01 23:22:07.783 +02:00 [INF] Executing endpoint 'FoodCourt.Web.Api.MetaController.Info (FoodCourt.Web)'
+2023-04-01 23:22:07.809 +02:00 [INF] Route matched with {action = "Info", controller = "Meta", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.String] Info() on controller FoodCourt.Web.Api.MetaController (FoodCourt.Web).
+2023-04-01 23:22:07.839 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2023-04-01 23:22:07.847 +02:00 [INF] Executed action FoodCourt.Web.Api.MetaController.Info (FoodCourt.Web) in 32.9577ms
+2023-04-01 23:22:07.848 +02:00 [INF] Executed endpoint 'FoodCourt.Web.Api.MetaController.Info (FoodCourt.Web)'
+2023-04-01 23:22:07.848 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:57678/info - - - 200 - text/plain;+charset=utf-8 71.4485ms
