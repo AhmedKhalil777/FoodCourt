@@ -4,7 +4,7 @@ using FoodCourt.SharedKernel.Interfaces;
 namespace FoodCourt.Core.RestaurantAggregate;
 public class Restaurant : EntityBase , IAggregateRoot
 {
-  public string Name { get; set; } = string.Empty;
+  public LocalName LocalizedName { get; set; } = new();
 
 
   private List<MealItem> _mealItems = new ();

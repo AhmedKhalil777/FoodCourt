@@ -1,14 +1,41 @@
 ﻿using FoodCourt.Core.ContributorAggregate;
 using FoodCourt.Core.ProjectAggregate;
+using FoodCourt.Core.RestaurantAggregate;
 using FoodCourt.Infrastructure.Data;
+using FoodCourt.SharedKernel;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodCourt.Web;
 
 public static class SeedData
 {
-  public static readonly Contributor Contributor1 = new ("Ardalis");
-  public static readonly Contributor Contributor2 = new ("Snowfrog");
+
+  public static readonly Restaurant Restaurant1 = new Restaurant
+  {
+    LocalizedName =
+    new SharedKernel.LocalName()
+    {
+      Locals = new List<Local> {
+
+      new Local{ Lang =  Language.Arabic, Value = "جاد" },
+      new Local {Lang = Language.English, Value  = "GAD" },
+      }
+    }
+  };
+
+  public static readonly Restaurant Restaurant2 = new Restaurant
+  {
+    LocalizedName =
+    new SharedKernel.LocalName()
+    {
+      Locals = new List<Local> {
+      new Local {Lang = Language.Arabic, Value = "طبالى"},
+      new Local {Lang = Language.English, Value =  "Tabali" },}
+
+    }
+  };
+  public static readonly Contributor Contributor1 = new("Ardalis");
+  public static readonly Contributor Contributor2 = new("Snowfrog");
   public static readonly Project TestProject1 = new Project("Test Project", PriorityStatus.Backlog);
   public static readonly ToDoItem ToDoItem1 = new ToDoItem
   {
@@ -57,6 +84,12 @@ public static class SeedData
       dbContext.Remove(item);
     }
     dbContext.SaveChanges();
+
+    dbContext.Restaurants.Add(Restaurant1);
+    dbContext.Restaurants.Add(Restaurant2);
+
+    dbContext.SaveChanges();
+
 
     dbContext.Contributors.Add(Contributor1);
     dbContext.Contributors.Add(Contributor2);
