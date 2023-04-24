@@ -29,7 +29,7 @@ public class Create : Endpoint<CreateRestaurantRequest, CreateRestaurantResponse
       ThrowError("Kindly Provide local names");
     }
     var restaurant = new Restaurant { LocalizedName = req.Name! };
-    var response = await _repository.AddAsync(restaurant);
-    await SendAsync(new CreateRestaurantResponse(response.Id , response.LocalizedName!));
+    var response = await _repository.AddAsync(restaurant,ct);
+    await SendAsync(new CreateRestaurantResponse(response.Id , response.LocalizedName!), cancellation: ct);
   }
 }
