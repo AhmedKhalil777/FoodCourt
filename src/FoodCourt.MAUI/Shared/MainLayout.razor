@@ -1,20 +1,22 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
+@inject IJSRuntime JsRuntime
+
+<MudThemeProvider IsDarkMode="@_isDarkMode"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Dense="true" Elevation="1">
+    <MudAppBar Color="Color.Transparent" Dense="true" Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" OnClick="@((e) => GoToGithub())" Color="Color.Inherit" />
+        <MudIconButton Icon="@_modeIcon" OnClick="@((e) => ModeToggle())" Color="Color.Inherit" />
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" Elevation="2">
         <MudDrawerHeader >
-            <MudContainer Fixed="true" Style="text-align: cente;">
+            <MudContainer Fixed="true" Style="text-align: center;">
                 <Logo />
-
             </MudContainer>
             
         </MudDrawerHeader>
@@ -31,8 +33,20 @@
 @code {
     bool _drawerOpen = true;
 
+    bool _isDarkMode = false;
+    string _modeIcon => _isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode;
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
+    }
+
+    void ModeToggle()
+    {
+        _isDarkMode = !_isDarkMode;
+    }
+
+    async void GoToGithub()
+    {
+        await JsRuntime.InvokeAsync<object>("open", "https://github.com/AhmedKhalil777/FoodCourt", "_blank");
     }
 }
