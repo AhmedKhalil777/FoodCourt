@@ -7,3 +7,13 @@
 @using FoodCourt.MAUI
 @using FoodCourt.MAUI.Shared
 @using MudBlazor
+@using FoodCourt.Client.Infrastructure.Areas.Auth.Pages;
+@using FoodCourt.Client.Infrastructure;
+
+@*Common Injections*@
+
+@inject NavigationManager _navigationManager
+@inject ISnackbar _snackBar
+@inject IDialogService _dialogService
+@inject HttpClient _httpClient
+@inject IJSRuntime _jsRuntime

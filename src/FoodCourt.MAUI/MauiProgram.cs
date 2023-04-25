@@ -1,6 +1,5 @@
 ﻿using FoodCourt.MAUI.Data;
-using Microsoft.AspNetCore.Components.WebView.Maui;
-using MudBlazor.Services;
+using FoodCourt.MAUI.Installers;
 
 namespace FoodCourt.MAUI;
 public static class MauiProgram
@@ -16,10 +15,13 @@ public static class MauiProgram
       });
 
     builder.Services.AddMauiBlazorWebView();
+    builder.Services.AddRazorPages();
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
-    builder.Services.AddMudServices();
+    builder.Services.InstallMudServices();
+    builder.Services.InstallAuth();
+    builder.Services.InstallClients();
 
     builder.Services.AddSingleton<WeatherForecastService>();
 

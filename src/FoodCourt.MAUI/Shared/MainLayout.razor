@@ -1,7 +1,5 @@
 ﻿@inherits LayoutComponentBase
 
-@inject IJSRuntime JsRuntime
-
 <MudThemeProvider IsDarkMode="@_isDarkMode"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
@@ -10,6 +8,7 @@
     <MudAppBar Color="Color.Transparent" Dense="true" Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         <MudSpacer />
+        <MudFab Label="Sign In" Size="Size.Small" StartIcon="@Icons.Material.Filled.Login" DisableElevation="true" OnClick="@((e) => _navigationManager.NavigateTo("login"))" />
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" OnClick="@((e) => GoToGithub())" Color="Color.Inherit" />
         <MudIconButton Icon="@_modeIcon" OnClick="@((e) => ModeToggle())" Color="Color.Inherit" />
     </MudAppBar>
@@ -26,7 +25,7 @@
             <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.History">Order History</MudNavLink>
         </MudNavMenu>
     </MudDrawer>
-    <MudMainContent>
+    <MudMainContent Class="mt-10 pa-4">
         @Body
     </MudMainContent>
 </MudLayout>
@@ -47,6 +46,6 @@
 
     async void GoToGithub()
     {
-        await JsRuntime.InvokeAsync<object>("open", "https://github.com/AhmedKhalil777/FoodCourt", "_blank");
+        await _jsRuntime.InvokeAsync<object>("open", "https://github.com/AhmedKhalil777/FoodCourt", "_blank");
     }
 }
